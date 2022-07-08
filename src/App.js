@@ -1,7 +1,7 @@
 import './App.css';
 import './Slideshow.css';
-import React from 'react';
-import { ReactDOM } from 'react';
+import React, { StrictMode } from 'react';
+import ReactDOM  from 'react-dom/client';
 
 const imgUrls = [
 	"https://images.unsplash.com/photo-1518893063132-36e46dbe2428?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80", 
@@ -84,20 +84,27 @@ const Arrow = ({ direction, clickFunction, glyph}) => (
   </div>
 );
 
+const containerElement = document.getElementById('container');
+
+const root = ReactDOM.createRoot(containerElement);
 // Function to render the carousel and send it to the container division
-ReactDOM.render(
-  <Carousel />,
-  document.getElementById('container')
+root.render(
+  <StrictMode>
+    <Carousel />
+  </StrictMode>
+  
 );
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div id="container" ></div>
+        <div id="container"></div>
       </header>
     </div>
   );
 }
+
+
 
 export default App;
